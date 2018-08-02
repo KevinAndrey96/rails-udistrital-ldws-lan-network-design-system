@@ -8,4 +8,5 @@
 
 User.create(email: 'kaherreras@unal.edu.co', role: 'Admin', name: 'Kevin Andrey Herrera Silva', password: 'REDACTED', password_confirmation: 'REDACTED')
 User.create(email: 'collaborator@ldws.local', role: 'Admin', name: 'LDWS Collaborator', password: 'REDACTED', password_confirmation: 'REDACTED')
+User.create(email: 'admin@ldws.com', role: 'Admin', name: 'Administrador LDWS', password: 'REDACTED', password_confirmation: 'REDACTED')
 puts "DefectoOk"
