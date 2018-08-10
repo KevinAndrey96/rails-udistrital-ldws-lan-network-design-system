@@ -1,0 +1,23 @@
+# == Schema Information
+#
+# Table name: ethernets
+#
+#  id         :integer          not null, primary key
+#  name       :string
+#  speed      :integer
+#  distance   :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  speed: 1
+  distance: 1
+
+two:
+  name: MyString
+  speed: 1
+  distance: 1
