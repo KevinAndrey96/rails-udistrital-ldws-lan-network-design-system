@@ -182,10 +182,23 @@ Switch.create(name: "Huawei", reference: "4771", price: "500")
   end
 end
 
-aux=Port.count
-while aux>0
-    TheSwitch.create(switches_id: 1, ports_id: aux, numberports: 5) 
-    TheSwitch.create(switches_id: 2, ports_id: aux, numberports: 10)
-    aux-=1
+Switch.create(name: "Arista", reference: "7050QX-32S", price: "9500")
+
+# Port layout per switch model. The reports pick access switches by their
+# RJ45-1 count (18, 24 or 48) and SFP uplinks (<= 4), and core/distribution
+# switches by their QSFP+ ports.
+rj45 = Port.find_by!(name: 'RJ45-1')
+sfp = Port.find_by!(name: 'SFP')
+sfp_plus = Port.find_by!(name: 'SFP+')
+qsfp_plus = Port.find_by!(name: 'QSFP+')
+{
+  'Cisco' => [[rj45, 24], [sfp, 4]],
+  'Huawei' => [[rj45, 48], [sfp, 4]],
+  'Arista' => [[qsfp_plus, 32], [sfp_plus, 4]]
+}.each do |name, layout|
+  switch = Switch.find_by!(name: name)
+  layout.each do |port, count|
+    TheSwitch.find_or_create_by!(switches_id: switch.id, ports_id: port.id) { |row| row.numberports = count }
+  end
 end
 puts "Defecto Ok"
