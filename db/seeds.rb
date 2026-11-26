@@ -6,9 +6,15 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.create(email: 'kaherreras@unal.edu.co', role: 'Admin', name: 'Kevin Andrey Herrera Silva', password: 'REDACTED', password_confirmation: 'REDACTED')
-User.create(email: 'collaborator@ldws.local', role: 'Admin', name: 'LDWS Collaborator', password: 'REDACTED', password_confirmation: 'REDACTED')
-User.create(email: 'admin@ldws.com', role: 'Admin', name: 'Administrador LDWS', password: 'REDACTED', password_confirmation: 'REDACTED')
+require 'securerandom'
+
+admin_email = ENV.fetch('LDWS_ADMIN_EMAIL', 'admin@ldws.local')
+unless User.exists?(email: admin_email)
+  admin_password = ENV['LDWS_ADMIN_PASSWORD'].presence || SecureRandom.urlsafe_base64(12)
+  User.create!(email: admin_email, role: 'Admin', name: 'Administrador LDWS',
+               password: admin_password, password_confirmation: admin_password)
+  puts "Admin: #{admin_email} / #{admin_password}" if ENV['LDWS_ADMIN_PASSWORD'].blank?
+end
 
 Port.create(name: "RJ45-1", speed: "1")
 Port.create(name: "SFP", speed: "1")
