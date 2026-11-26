@@ -1,0 +1,16 @@
+services:
+  web:
+    build: .
+    image: ldws-rails
+    environment:
+      RAILS_ENV: development
+      SQLITE_DATABASE_DIR: /app/storage
+      LDWS_ADMIN_EMAIL: ${LDWS_ADMIN_EMAIL:-admin@ldws.local}
+      LDWS_ADMIN_PASSWORD: ${LDWS_ADMIN_PASSWORD:-}
+    ports:
+      - "3000:3000"
+    volumes:
+      - ldws-db:/app/storage
+
+volumes:
+  ldws-db:

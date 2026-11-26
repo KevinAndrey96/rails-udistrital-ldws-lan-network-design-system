@@ -1,0 +1,13 @@
+.git
+.github
+.env
+.env.*
+!.env.example
+log/*
+tmp/*
+storage
+db/*.sqlite3
+public/assets
+doc
+.bundle
+vendor/bundle

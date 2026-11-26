@@ -141,6 +141,47 @@ Cable.create(name: "Fibra Optica", ctype: "Multimodo", structure: "Tight-Buffer"
 Switch.create(name: "Cisco", reference: "2407", price: "100")
 Switch.create(name: "Huawei", reference: "4771", price: "500")
 
+# Equipment catalog for the quotation engine. power is the quality tier
+# (1 economic, 2 standard, 3 optimal), slots the rack units used (or offered,
+# for racks), price in USD per unit or per metre for cable and raceway.
+[
+  %w(Switch TP-Link TL-SG1024D 1 180 24 1),
+  %w(Switch HPE\ Aruba 2530-24G 2 950 24 1),
+  %w(Switch Cisco Catalyst\ 2960X-24TS 3 2400 24 1),
+  %w(Router MikroTik RB4011iGS+ 1 220 10 1),
+  %w(Router Ubiquiti EdgeRouter\ 12 2 480 12 1),
+  %w(Router Cisco ISR\ 4331 3 3200 3 1),
+  %w(Rack Genérico Gabinete\ 12U 1 250 0 12),
+  %w(Rack Genérico Gabinete\ 42U 1 690 0 42),
+  %w(Rack Panduit NetRunner\ 24U 2 1100 0 24),
+  %w(Rack Panduit NetRunner\ 42U 2 1600 0 42),
+  %w(Rack APC NetShelter\ SX\ 24U 3 1900 0 24),
+  %w(Rack APC NetShelter\ SX\ 42U 3 2600 0 42),
+  %w(Cable Nexxt UTP\ Cat\ 5e 1 1 0 0),
+  %w(Cable Belden UTP\ Cat\ 6 2 2 0 0),
+  %w(Cable Panduit UTP\ Cat\ 6A 3 3 0 0),
+  %w(Canaleta Dexson DXN10\ 20x12 1 2 0 0),
+  %w(Canaleta Legrand DLP\ 32x16 2 4 0 0),
+  %w(Canaleta Panduit LD5\ 50x25 3 7 0 0),
+  %w(Toma Nexxt Jack\ Cat\ 5e 1 3 0 0),
+  %w(Toma Leviton Jack\ Cat\ 6 2 6 0 0),
+  %w(Toma Panduit Mini-Com\ Cat\ 6A 3 11 0 0),
+  %w(Conector Nexxt RJ45\ Cat\ 5e 1 1 0 0),
+  %w(Conector AMP RJ45\ Cat\ 6 2 1 0 0),
+  %w(Conector Panduit RJ45\ Cat\ 6A 3 2 0 0),
+  %w(AP TP-Link EAP225 1 90 1 0),
+  %w(AP Ubiquiti UniFi\ U6\ Lite 2 130 1 0),
+  %w(AP Cisco Catalyst\ 9115AX 3 750 1 0)
+].each do |etype, brand, reference, power, price, ports, slots|
+  Equipment.find_or_create_by!(etype: etype, reference: reference) do |equipment|
+    equipment.brand = brand
+    equipment.power = power.to_i
+    equipment.price = price.to_i
+    equipment.ports = ports.to_i
+    equipment.slots = slots.to_i
+  end
+end
+
 aux=Port.count
 while aux>0
     TheSwitch.create(switches_id: 1, ports_id: aux, numberports: 5) 

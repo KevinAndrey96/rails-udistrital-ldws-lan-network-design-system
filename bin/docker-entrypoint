@@ -1,0 +1,13 @@
+#!/bin/sh
+set -e
+
+rm -f tmp/pids/server.pid
+
+env="${RAILS_ENV:-development}"
+if [ "$env" != "production" ] && [ ! -f "${SQLITE_DATABASE_DIR:-db}/${env}.sqlite3" ]; then
+  bundle exec rake db:setup
+else
+  bundle exec rake db:migrate
+fi
+
+exec "$@"
