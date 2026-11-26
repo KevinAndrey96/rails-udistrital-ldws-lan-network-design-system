@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+  <title>Piso libre</title>
+  <rect width="40" height="40" fill="#f3f4f6"/>
+  <path d="M0 20h40M20 0v40" stroke="#e5e7eb" stroke-width="1"/>
+</svg>

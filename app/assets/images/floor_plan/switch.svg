@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+  <title>Switch</title>
+  <rect x="3" y="13" width="34" height="14" rx="2" fill="#1f3a5f"/>
+  <g fill="#e5e7eb">
+    <rect x="7" y="18" width="3" height="4"/>
+    <rect x="12" y="18" width="3" height="4"/>
+    <rect x="17" y="18" width="3" height="4"/>
+    <rect x="22" y="18" width="3" height="4"/>
+  </g>
+  <circle cx="32" cy="20" r="1.6" fill="#34d399"/>
+</svg>

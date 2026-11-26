@@ -664,14 +664,14 @@
                 
                 <% if j == 0 %>
                 <% if i == 0%>
-                <td><center><img class="img-responsive" height="30" src="https://mymsystech.com.co/440-medium_default/rack-3bumen-r2c-9u.jpg"></center></td>
+                <td><center><%= image_tag 'floor_plan/rack.svg', class: 'img-responsive', height: 30 %></center></td>
                 <% else %>
-                <td><center><img class="img-responsive" height="30" src="http://www.construmatica.com/construpedia/images/thumb/5/58/Baldosas_by_Patrick_Hoesly.jpg/300px-Baldosas_by_Patrick_Hoesly.jpg"></center></td>
+                <td><center><%= image_tag 'floor_plan/floor.svg', class: 'img-responsive', height: 30 %></center></td>
                 <% end %>
                 <% else %>
                 <% if i%2 == 0 %>
                 <%if cont < physical.computers%>
-                <td><center><img class="img-responsive" height="30" src="http://img.planospara.com/mesa-para-computador-en-mesas-2d-muebles-equipamiento-42531.jpg"></center></td>
+                <td><center><%= image_tag 'floor_plan/workstation.svg', class: 'img-responsive', height: 30 %></center></td>
                 <%cont+=1%>
                 <% if i == 0 %>
                 <%@cable = (0.5+(physical.height*2)+((j+1))+2)+@cable %>
@@ -679,12 +679,12 @@
                 <%@cable = (0.5+(physical.height*2)+((i+1)+(j+1))+2)+@cable %>
                 <% end %>
                 <%else%>
-                <td><center><img class="img-responsive" height="30" src="http://www.construmatica.com/construpedia/images/thumb/5/58/Baldosas_by_Patrick_Hoesly.jpg/300px-Baldosas_by_Patrick_Hoesly.jpg"></center></td>
+                <td><center><%= image_tag 'floor_plan/floor.svg', class: 'img-responsive', height: 30 %></center></td>
                 <%end%>
                 
                 
                 <% else %>
-                <td><center><img class="img-responsive" height="30" src="http://www.construmatica.com/construpedia/images/thumb/5/58/Baldosas_by_Patrick_Hoesly.jpg/300px-Baldosas_by_Patrick_Hoesly.jpg"></center></td>
+                <td><center><%= image_tag 'floor_plan/floor.svg', class: 'img-responsive', height: 30 %></center></td>
                 <%end%>
                 <%end%>
                 <% j += 1 %>

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="640" height="380" viewBox="0 0 640 380" font-family="DejaVu Sans, Arial, sans-serif">
+  <title>Topología Enterprise con redundancia</title>
+  <defs>
+    <g id="router">
+      <circle r="26" fill="#1f3a5f"/>
+      <path d="M-14 0h28M-14 0l6-5M-14 0l6 5M14 0l-6-5M14 0l-6 5M0-14v28M0-14l-5 6M0-14l5 6M0 14l-5-6M0 14l5-6" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    </g>
+    <g id="switch">
+      <rect x="-50" y="-18" width="100" height="36" rx="6" fill="#1f3a5f"/>
+      <path d="M-30-6h40l-6-5M30 6h-40l6 5" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    </g>
+  </defs>
+  <g stroke="#a2232c" stroke-width="3" fill="none">
+    <path d="M320 78v62M302 184l-102 70M338 184l102 70"/>
+    <path d="M250 268h140" stroke-dasharray="8 5"/>
+    <path d="M200 290v20M440 290v20M110 310h420"/>
+  </g>
+  <g fill="#eef2f7" stroke="#1f3a5f" stroke-width="2">
+    <path d="M276 66a22 22 0 0 1 8-40 30 30 0 0 1 56-6 24 24 0 0 1 28 30 18 18 0 0 1-8 16z"/>
+  </g>
+  <use xlink:href="#router" x="320" y="166"/>
+  <use xlink:href="#switch" x="200" y="272"/>
+  <use xlink:href="#switch" x="440" y="272"/>
+  <g fill="#1f2937" font-size="14" text-anchor="middle">
+    <text x="320" y="52">Internet / WAN</text>
+    <text x="400" y="171" text-anchor="start">Router de borde</text>
+    <text x="140" y="277" text-anchor="end">Core 1</text>
+    <text x="500" y="277" text-anchor="start">Core 2</text>
+    <text x="320" y="260" font-size="11" fill="#4b5563">enlace de respaldo</text>
+    <text x="320" y="340">Capa de acceso</text>
+    <text x="320" y="360" font-size="12" fill="#4b5563">cada switch de acceso tiene un uplink a cada core</text>
+  </g>
+</svg>

@@ -506,27 +506,7 @@ if @cantidad_switches_aux!=nil
     <center><h1>Diagrama de red</h1></center>
     <center><h4><%=@request.ctype%></h4></center>
 <!-- Inicio gráfico -->
-<% if @request.ctype=="Campus" %>
-    <center>
-        <%
-        if @logical.redundancy?
-            %><img src="https://instanceshape.com/admin/VLSM/Images/redundante.png"><%
-        else
-            %><img src="https://instanceshape.com/admin/VLSM/Images/no-redundante.png"><%
-        end
-        %>
-    </center>
-<% else %>
-    <center>
-        <%
-        if @logical.redundancy?
-            %><img src="https://instanceshape.com/admin/VLSM/Images/campus_redundante.png"><%
-        else
-            %><img src="https://instanceshape.com/admin/VLSM/Images/campus_no-redundante.png"><%
-        end
-        %>
-    </center>
-<%end%>
+<center><%= topology_diagram @request, @logical %></center>
 <center>
     <%
     #i=superi
@@ -538,7 +518,7 @@ if @cantidad_switches_aux!=nil
     i+=1
     j+=1
     %>
-        <%=j%><img src="https://instanceshape.com/admin/VLSM/Images/Acceso.png">
+        <%=j%><%= wicked_pdf_image_tag 'Acceso.png' %>
     <%
     
     end

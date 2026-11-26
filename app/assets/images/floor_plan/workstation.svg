@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+  <title>Puesto de trabajo</title>
+  <rect x="3" y="22" width="34" height="14" rx="1.5" fill="#d6b48a"/>
+  <rect x="10" y="6" width="20" height="13" rx="1.5" fill="#1f2937"/>
+  <rect x="12" y="8" width="16" height="9" fill="#60a5fa"/>
+  <path d="M18 19h4v3h-4z" fill="#1f2937"/>
+  <rect x="12" y="27" width="16" height="4" rx="1" fill="#374151"/>
+</svg>
