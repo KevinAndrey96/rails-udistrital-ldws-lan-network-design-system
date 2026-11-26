@@ -26,11 +26,15 @@
 #
 
 class User < ActiveRecord::Base
-  
+  ADMIN_ROLE = 'Admin'.freeze
+
   has_many :companies
   # Include default devise modules. Others available are:
   # :confirmable, :lockableand :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :timeoutable 
-         
+         :recoverable, :rememberable, :trackable, :validatable, :timeoutable
+
+  def admin?
+    role == ADMIN_ROLE
+  end
 end

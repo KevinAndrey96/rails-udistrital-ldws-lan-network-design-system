@@ -1,5 +1,6 @@
 class BinnaclesController < ApplicationController
   before_action :authenticate_user!
+  before_action :require_admin!
   before_action :set_binnacle, only: [:show, :destroy]
 
   # GET /binnacles

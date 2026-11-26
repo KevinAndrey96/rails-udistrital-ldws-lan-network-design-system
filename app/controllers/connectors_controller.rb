@@ -1,5 +1,6 @@
 class ConnectorsController < ApplicationController
   before_action :authenticate_user!
+  before_action :require_admin!
   before_action :set_connector, only: [:show, :edit, :update, :destroy]
 
   # GET /connectors

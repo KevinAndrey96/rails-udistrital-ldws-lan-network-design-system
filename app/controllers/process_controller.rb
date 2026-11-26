@@ -3,11 +3,11 @@ class ProcessController < ApplicationController
   def index
     if params[:new]=="false"
       @id=params[:id]
-      @company=Company.find(@id)
+      @company=accessible_companies.find(@id)
     elsif params[:edit]=="true"
       id=params[:id]
-      @request=Request.find(id)
-      @company=Company.find(@request.company.id)
+      @request=accessible_requests.find(id)
+      @company=@request.company
       @physicals1=Physical.where(:request_id => id)
       @logical=Logical.where(:request_id => id).first
       @subnets=Subnet.where(:logical_id => @logical.id)

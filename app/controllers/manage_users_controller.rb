@@ -1,5 +1,6 @@
 class ManageUsersController < ApplicationController
   before_action :authenticate_user!
+  before_action :require_admin!
   before_action:set_user, only: [:create,:show, :edit, :update, :destroy, :delete]
   def index
     @users = User.all

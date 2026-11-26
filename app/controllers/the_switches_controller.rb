@@ -1,4 +1,6 @@
 class TheSwitchesController < ApplicationController
+  before_action :authenticate_user!
+  before_action :require_admin!
   before_action :set_the_switch, only: [:show, :edit, :update, :destroy]
 
   # GET /the_switches

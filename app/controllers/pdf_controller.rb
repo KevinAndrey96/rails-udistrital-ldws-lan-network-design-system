@@ -76,7 +76,7 @@ class PdfController < ApplicationController
   private
 
   def load_design
-    @request = Request.find(params[:request_id])
+    @request = accessible_requests.find(params[:request_id])
     @company = @request.company
     @physical = Physical.where(request_id: @request.id)
     @logical = Logical.find_by!(request_id: @request.id)

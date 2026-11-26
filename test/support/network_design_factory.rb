@@ -1,9 +1,9 @@
 # Builds the records the request wizard creates: a company, its design
 # request, the physical spaces, the logical design and its subnets.
 module NetworkDesignFactory
-  def create_user(email: 'designer@ldws.local')
+  def create_user(email: 'designer@ldws.local', role: 'User')
     User.create!(email: email, password: 'test-password', password_confirmation: 'test-password',
-                 role: 'Admin', name: 'Network Designer')
+                 role: role, name: 'Network Designer')
   end
 
   def create_design(user: create_user, rooms: [{ computers: 40 }], subnets: {}, scalability: 20,

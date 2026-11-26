@@ -7,7 +7,7 @@ class RequestsController < ApplicationController
   def index
     #@requests = Request.all
     if params[:id]
-      @requests = Request.where(:company_id => params[:id])
+      @requests = accessible_requests.where(company_id: params[:id])
     end
   end
 
@@ -17,18 +17,10 @@ class RequestsController < ApplicationController
   end
 
   # GET /requests/new
-  @ismine
   def new
-    if params[:company_id]
-      @ismine=Company.find(params[:company_id])
-      if @ismine.user_id == current_user.id
-        @request = Request.new
-      else
-        redirect_to root_path
-      end
-    else
-      redirect_to root_path
-    end
+    return redirect_to root_path unless accessible_companies.exists?(params[:company_id])
+
+    @request = Request.new
   end
 
   # GET /requests/1/edit
@@ -86,11 +78,11 @@ class RequestsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_request
-      @request = Request.find(params[:id])
+      @request = accessible_requests.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def request_params
-      params.require(:request).permit(:title, :company_id, :description, :objective, :observation, :web, :bd, :aplications, :proxy, :voip, :video_conference, :active_dir, :dhcp, :dns, :ftp, :logical_id, :physical_id, :company_id, :email)
+      params.require(:request).permit(:title, :description, :objective, :observation, :web, :bd, :aplications, :proxy, :voip, :video_conference, :active_dir, :dhcp, :dns, :ftp, :logical_id, :physical_id, :email)
     end
 end

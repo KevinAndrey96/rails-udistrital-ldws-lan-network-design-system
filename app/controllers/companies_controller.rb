@@ -5,11 +5,7 @@ class CompaniesController < ApplicationController
   # GET /companies
   # GET /companies.json
   def index
-    if current_user.role=="Admin"
-      @companies = Company.all
-    else
-      @companies = Company.where(:user_id => current_user.id)
-    end
+    @companies = accessible_companies
   end
 
   # GET /companies/1
@@ -77,11 +73,11 @@ end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_company
-      @company = Company.find(params[:id])
+      @company = accessible_companies.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def company_params
-      params.require(:company).permit(:name, :user_id, :nit, :cell, :phone, :email)
+      params.require(:company).permit(:name, :nit, :cell, :phone, :email)
     end
 end
