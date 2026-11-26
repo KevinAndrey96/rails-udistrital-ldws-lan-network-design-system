@@ -29,8 +29,15 @@
 #
 
 class Request < ActiveRecord::Base
+  # Services that each require a dedicated server in the design.
+  SERVER_SERVICES = %i(web bd aplications proxy voip video_conference active_dir dhcp dns ftp email).freeze
+
   belongs_to :company
   has_one :logical
   has_many :physical
   has_many :buildings
+
+  def required_server_count
+    SERVER_SERVICES.count { |service| public_send("#{service}?") }
+  end
 end
